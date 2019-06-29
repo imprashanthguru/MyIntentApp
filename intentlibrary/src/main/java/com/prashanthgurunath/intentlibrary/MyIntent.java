@@ -2,6 +2,7 @@ package com.prashanthgurunath.intentlibrary;
 
 
 import android.app.Activity;
+import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -34,6 +35,61 @@ public class MyIntent {
         return this;
     }
 
+    public void openFacebook()
+    {
+        String url = "https://www.facebook.com";
+        openBrowser(url);
+    }
+
+    public void openTwitter()
+    {
+        String url = "https://twitter.com";
+        openBrowser(url);
+    }
+
+    public void openAmazon()
+    {
+        String url = "https://www.amazon.in/";
+        openBrowser(url);
+    }
+
+    public void followDeveloperOnLinkedin()
+    {
+        String url = "https://www.linkedin.com/in/prashanth-gurunath-2834a6155/";
+        openBrowser(url);
+    }
+
+    public MyIntent searchMeaning(String text)
+    {
+        i = new Intent(Intent.ACTION_WEB_SEARCH);
+        i.putExtra(SearchManager.QUERY, text);
+        return this;
+    }
+
+
+
+    // Phone Intent
+    public MyIntent dispDialNumber() // if number isn't entered, simply open the phone dialler
+    {
+        i = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"));
+        return this;
+    }
+
+    public MyIntent dispDialNumber(String phoneNumber)
+    {
+        i = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + phoneNumber.replace(" ", "")));
+        return this;
+    }
+
+    public MyIntent callNumber(String phoneNumber)
+    {
+        i = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + phoneNumber));
+        return this;
+    }
+
+
+
+
     public Intent getIntent() {     // return intent
         return i;
     }
@@ -52,28 +108,4 @@ public class MyIntent {
         startActivity(getIntent());
     }
 
-// to use the libraries
-// MyIntent.from(this).openBrowser().display();
-// MyIntent.from(this).dispDialNumber().show();
-
-
-    //
-    public MyIntent dispDialNumber() // if number isn't entered, simply open the phone dialler
-    {
-        i = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"));
-        return this;
-    }
-
-        public MyIntent dispDialNumber(String phoneNumber)
-    {
-        i = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + phoneNumber.replace(" ", "")));
-        return this;
-    }
-
-    public MyIntent callNumber(String phoneNumber)
-    {
-        i = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + phoneNumber));
-        return this;
-    }
-
-}
+}  // end of class MyIntent
