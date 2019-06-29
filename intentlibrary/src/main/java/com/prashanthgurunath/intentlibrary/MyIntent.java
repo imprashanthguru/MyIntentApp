@@ -35,56 +35,28 @@ public class MyIntent {
         return this;
     }
 
-    public MyIntent openFacebook()
+    public void openFacebook()
     {
         String url = "https://www.facebook.com";
-        if (!TextUtils.isEmpty(url) && !url.contains("://")) // basic validation
-        {
-            url = "http://" + url;
-        }
-
-        i = new Intent(Intent.ACTION_VIEW);
-        i.setData(Uri.parse(url));
-        return this;
+        openBrowser(url);
     }
 
-    public MyIntent openTwitter()
+    public void openTwitter()
     {
         String url = "https://twitter.com";
-        if (!TextUtils.isEmpty(url) && !url.contains("://")) // basic validation
-        {
-            url = "http://" + url;
-        }
-
-        i = new Intent(Intent.ACTION_VIEW);
-        i.setData(Uri.parse(url));
-        return this;
+        openBrowser(url);
     }
 
-    public MyIntent openAmazon()
+    public void openAmazon()
     {
         String url = "https://www.amazon.in/";
-        if (!TextUtils.isEmpty(url) && !url.contains("://")) // basic validation
-        {
-            url = "http://" + url;
-        }
-
-        i = new Intent(Intent.ACTION_VIEW);
-        i.setData(Uri.parse(url));
-        return this;
+        openBrowser(url);
     }
 
-    public MyIntent followDeveloperOnLinkedin()
+    public void followDeveloperOnLinkedin()
     {
         String url = "https://www.linkedin.com/in/prashanth-gurunath-2834a6155/";
-        if (!TextUtils.isEmpty(url) && !url.contains("://")) // basic validation
-        {
-            url = "http://" + url;
-        }
-
-        i = new Intent(Intent.ACTION_VIEW);
-        i.setData(Uri.parse(url));
-        return this;
+        openBrowser(url);
     }
 
     public MyIntent searchMeaning(String text)
@@ -135,5 +107,6 @@ public class MyIntent {
     {
         startActivity(getIntent());
     }
+
 
 }  // end of class MyIntent
