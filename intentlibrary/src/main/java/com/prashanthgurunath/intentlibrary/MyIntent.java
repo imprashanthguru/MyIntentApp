@@ -72,7 +72,7 @@ public class MyIntent {
 
     public MyIntent callNumber(String phoneNumber)
     {
-        i = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + phoneNumber.replace(" ", "")));
+        i = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + phoneNumber));
         return this;
     }
 
